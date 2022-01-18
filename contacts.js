@@ -19,9 +19,7 @@ async function getContactById(contactId) {
 async function addContact(name, email, phone) {
   const contacts = await listContacts();
   if (!name || !email || !phone) {
-    return {
-      massage: "Поля name , email и phone обязательны для заполнения !",
-    };
+    return "Поля name , email и phone обязательны для заполнения !";
   }
   const newContact = { id: v1(), name, email, phone };
   contacts.push(newContact);

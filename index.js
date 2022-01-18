@@ -28,8 +28,12 @@ async function invokeAction({ action, id, name, email, phone }) {
         email,
         phone
       );
-      console.log("Контакт добавлен");
-      console.table(newContact);
+      if (typeof newContact === "object") {
+        console.log("Контакт добавлен");
+        console.table(newContact);
+      } else {
+        console.table(newContact);
+      }
       break;
 
     case "remove":
