@@ -14,12 +14,12 @@ async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
       const contacts = await contactsOperations.listContacts();
-      console.log(contacts);
+      console.table(contacts);
       break;
 
     case "get":
       const contact = await contactsOperations.getContactById(id);
-      console.log(contact);
+      console.table(contact);
       break;
 
     case "add":
@@ -28,26 +28,18 @@ async function invokeAction({ action, id, name, email, phone }) {
         email,
         phone
       );
-      console.log(newContact);
+      console.log("Контакт добавлен");
+      console.table(newContact);
       break;
 
     case "remove":
       const removeContact = await contactsOperations.removeContact(id);
-      console.log(removeContact);
+      console.log("Контакт удален !");
+      console.table(removeContact);
       break;
 
     default:
       console.warn("\x1B[31m Unknown action type!");
   }
 }
-
-//invokeAction({ action: "list" });
-//invokeAction({ action: "get", id: "47" });
-// invokeAction({
-//   action: "add",
-//   name: "Joe Satriani",
-//   email: "Satriani@gmail.com",
-//   phone: "(699) 552-2316",
-// });
-//invokeAction({ action: "remove", id: "d16942b0-748d-11ec-ad85-797b24fa8d32" });
 invokeAction(argv);
